@@ -1,0 +1,62 @@
+gestion_core_homepage:
+    path:     /
+    defaults: { _controller: GestionCoreBundle:Taxes:getAll }
+
+debug_homepage:
+    path:     /debug
+    defaults: { _controller: GestionCoreBundle:Debug:index }
+
+gestion_core_taxe_homepage:
+    path:     /taxe
+    defaults: { _controller: GestionCoreBundle:Taxes:getAll }
+
+gestion_core_taxe_create:
+    path:     /taxe/new
+    defaults: { _controller: GestionCoreBundle:Taxes:create }
+
+gestion_core_taxe_get:
+    path:     /taxe/get/{id}
+    defaults: { _controller: GestionCoreBundle:Taxes:get }
+
+gestion_core_taxe_update:
+    path:     /taxe/update/{id}
+    defaults: { _controller: GestionCoreBundle:Taxes:update }
+
+gestion_core_taxe_delete:
+    path:     /taxe/delete/{id}
+    defaults: { _controller: GestionCoreBundle:Taxes:delete }
+
+
+
+gestion_core_categories_create:
+    path:     /categories/new
+    defaults: { _controller: GestionArticlesBundle:Categories\Categories:create }
+
+gestion_core_categories_homepage:
+    path:     /categories
+    defaults: { _controller: GestionArticlesBundle:Categories\Categories:getAll , temp : "parametrage"}
+
+gestion_core_categories_update:
+    path:     /categories/update/{id}
+    defaults: { _controller: GestionArticlesBundle:Categories\Categories:update }
+
+gestion_core_categories_delete:
+    path:     /categories/delete/{id}
+    defaults: { _controller: GestionArticlesBundle:Categories\Categories:delete }
+    
+    
+gestion_core_moyenspaiement_create:
+    path:     /moyenspaiement/new
+    defaults: { _controller: GestionCoreBundle:MoyensPaiement:create }
+
+gestion_core_moyenspaiement_homepage:
+    path:     /moyenspaiement
+    defaults: { _controller: GestionCoreBundle:MoyensPaiement:getAll , temp : "core" }
+
+gestion_core_moyenspaiement_update:
+    path:     /moyenspaiement/update/{id}
+    defaults: { _controller: GestionCoreBundle:MoyensPaiement:update }
+
+gestion_core_moyenspaiement_delete:
+    path:     /moyenspaiement/delete/{id}
+    defaults: { _controller: GestionCoreBundle:MoyensPaiement:delete }

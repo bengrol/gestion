@@ -1,0 +1,85 @@
+<?php
+
+namespace Gestion\ArticlesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gestion\ArticlesBundle\Entity\Commandes ;
+/**
+ * LignesCommande
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Gestion\ArticlesBundle\Entity\LignesCommandeRepository")
+ */
+class LignesCommande
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomArticle", type="string", length=255)
+     */
+    private $nomArticle;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prixHt", type="float")
+     */
+    private $prixHt;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="tva", type="float")
+     */
+    private $tva;
+
+
+    /**
+     *
+     * @var object 
+     * 
+     * @ORM\Column(name="article", type="object")
+     * 
+     * @ORM\ManyToOne(targetEntity="Articles", inversedBy="ligneCmd")
+     * 
+     */
+    private $article;
+
+    
+       
+    /**
+     *
+     * @var object 
+     * 
+     * @ORM\Column(name="commande", type="object")
+     * 
+     * @ORM\ManyToOne(targetEntity="Commandes", inversedBy="lignesCmd")
+     * 
+     */
+    private $commande; 
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}

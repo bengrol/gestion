@@ -1,0 +1,64 @@
+<?php
+
+namespace Gestion\ClientsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RendezVous
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Gestion\ClientsBundle\Entity\RendezVousRepository")
+ */
+class RendezVous
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @var time
+     *
+     * @ORM\Column(name="heuredebut", type="time")
+     */
+    private $heureDebut;
+
+    /**
+     * @var time
+     *
+     * @ORM\Column(name="heurefin", type="time")
+     */
+    private $heureFin;
+
+    
+    /**
+     * @var object
+     *
+     * @ORM\Column(name="client", type="object")
+     * @ORM\ManyToOne(targetEntity="Clients", inversedBy="rendezVous")
+     */
+    private $client;
+
+    /**
+     * @var object
+     *
+     * @ORM\Column(name="salarie", type="object")
+     * @ORM\ManyToOne(targetEntity="Salaries", inversedBy="rendezVous" )
+     */
+    private $salarie;
+
+
+
+}

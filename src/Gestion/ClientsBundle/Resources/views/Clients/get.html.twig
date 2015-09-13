@@ -1,0 +1,126 @@
+{% extends "::baseGestion.html.twig" %}
+{% block title %}Fiche Client {{parent()}}{% endblock %}
+{% block stylesheets %}     {{ parent() }}{% endblock %}
+{% block jumbotron %}
+
+    
+    <div class="row">
+        
+        <div class="panel panel-default col-lg-3">
+            
+            <div class="panel-heading panel-primary">
+                <h1>{{ client.nom }}</h1><h3>{{ client.prenom }}</h3>
+                <span >Point Fidelité : <span class="badge">{{ client.pointFidelite is empty ? "" : client.pointFidelite }}</span></span>
+                
+            </div>
+            <div class="panel-body panel-primary">
+                <ul class="list-group">
+                    <li class="list-group-item">Nom : {{ client.nom }}</li>
+                    <li class="list-group-item">Prenom : {{ client.prenom }}</li>
+                    <li class="list-group-item">telephone : {{ client.telephone }}</li>
+                    <li class="list-group-item">Portable : {{ client.portable }}</li>
+                    <li class="list-group-item">Mail : {{ client.mail }}</li>
+                    <li class="list-group-item">Date naissance : {{ client.dateNaissance is empty ? "" : client.dateNaissance |date("d/m/Y") }}</li>
+
+                </ul>
+            </div>
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-primary" 
+                   href="{{ path('gestion_clients_update' , { idClient : client.id}) }}" 
+                   role="button">
+                    Mettre à jour
+                </a>
+                <a class="btn btn-default"  
+                   href="{{ path('gestion_clients_get') }}" > 
+                    Retour Liste 
+                </a>
+            </div>
+            
+        </div>
+        
+        <div class="thumbnail col-lg-6">
+            <div class="caption">
+                <h1>Historique Client</h1>
+                <div class="btn-group btn-group-sm">
+                    <a class="btn btn-primary" 
+                       href="{{ path('gestion_commandes_create' , { client : client.id}) }}" 
+                       role="button">
+                        Nouvelle Commande
+                    </a>
+                    
+                </div>
+                <div class="panel panel-default">
+                <div class=" panel-body">
+                <ul class="list-group">  
+                    {% if listeCmd != null %}
+
+                    
+                        {% for cmd in listeCmd %}
+                    
+                    {% if cmd.solde  %}
+                        <li class="list-group-item list-group-item-info list-cmd">
+                    {% endif %}
+                    {% if not cmd.solde  %}
+                        <li class="list-group-item list-group-item-danger list-cmd">
+                    {% endif %}
+                    <span id="{{ cmd.id }}">
+                        #{{ cmd.id }} - 
+                        du <strong>{{ cmd.dateCmd  |date('d/m/Y')  }}</strong>
+                        
+                    </span>
+                        </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+                    </div>
+                    </div>
+            </div>
+            
+            <div class="detailCmd col-12"></div>
+
+        </div>
+        
+     
+        <div class="thumbnail col-lg-3">
+            
+            {{ render(controller('GestionArticlesBundle:Commandes/HistoriqueTech:get', { 'id': client.id })) }}
+            
+            
+
+        </div>
+        
+        
+        
+    </div>
+    
+    
+
+<script type="text/javascript">
+    
+     
+       $('.list-cmd').css( 'cursor', 'pointer' );
+    
+    
+    $( ".list-cmd" ).click(function() {
+        
+        
+        var url = "{{path("gestion_articles_getDetailCommande")}}";
+      
+       url += "/"+$(this).children('span').attr('id');
+       
+       console.log(url);
+       
+              $.get( url)
+                .done(function(data) 
+                 {
+                    $(".detailCmd").html(data);
+                 });
+       
+       
+    });
+    
+    
+      
+    
+</script>
+{% endblock %}

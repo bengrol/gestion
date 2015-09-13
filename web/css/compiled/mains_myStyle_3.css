@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Lato Light'), local('Lato-Light'), url(http://fonts.gstatic.com/s/lato/v8/22JRxvfANxSmnAhzbFH8PgLUuEpTyoUstqEm5AMlJo4.woff2) format('woff2'), url(http://fonts.gstatic.com/s/lato/v8/kcf5uOXucLcbFOydGU24WALUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}
+
+
+.body{
+    background-color: rgba(248, 231, 207, 0.1);
+}
+
+.img-logo{
+    padding: 2em 3em;
+}
+
+
+
+.LatoFont{
+    font-family: 'Lato';
+    font-style:normal;
+    font-weight:400;
+    line-height:1
+    
+    
+}
+
+ .imgShadow{
+            -moz-box-shadow: 2px 5px 10px 2px #656565;
+            -webkit-box-shadow: 2px 5px 10px 2px #656565;
+            -o-box-shadow: 2px 5px 10px 2px #656565;
+            box-shadow: 2px 5px 10px 2px #656565;
+            border-radius: 10px;
+            margin-bottom: 33px;
+        }
+        
+.divForm{
+    padding-bottom: 5px;
+}  
+.buttonForm{
+    margin-right: 15px;
+  float: right;
+}
+    
+div label{
+        min-width: 120px;
+    } 
+    

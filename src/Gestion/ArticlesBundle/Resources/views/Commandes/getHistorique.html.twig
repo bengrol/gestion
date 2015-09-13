@@ -1,0 +1,14 @@
+<div class="caption">
+    <h1>Historique Technique  </h1>
+    <ul class="list-group">  
+    {% for cmd in historique %}
+        <li class="list-group-item list-cmd">
+            <span id="{{ cmd.id }}">
+                #{{ cmd.id }} - 
+                du <strong>{{ cmd.dateCmd  |date('d/m/Y')  }}</strong><br/>
+                        {{cmd.detail | nl2br  }}
+            </span>
+        </li>
+    {% endfor %}
+    </ul>
+</div>

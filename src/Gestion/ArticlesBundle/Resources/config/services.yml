@@ -1,0 +1,14 @@
+parameters:
+#    gestion_articles.example.class: Gestion\ArticlesBundle\Example
+
+services:
+#    gestion_articles.example:
+#        class: %gestion_articles.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    gestion_article.hbuhbuhb:
+        class: Gestion\ArticlesBundle\ClassesServices\hbuhbuhb
+        
+    formupdate.test:
+        class: Gestion\ArticlesBundle\Form\ArticlesType
+        arguments: [ @doctrine.orm.entity_manager ]

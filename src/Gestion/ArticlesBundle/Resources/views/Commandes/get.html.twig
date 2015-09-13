@@ -1,0 +1,80 @@
+{% extends "::baseGestion.html.twig" %}
+{% block title %}Commande {{parent()}} {% endblock %}
+{% block stylesheets %}  {{ parent() }}{% endblock %}
+{% block jumbotron %}
+
+<h1>Commande #{{cmd.id}}</h1>
+    <div class="btn-group btn-group-sm">
+        <a class="btn btn-primary" href="{{path('gestion_clients_get', {idClient :cmd.client.id})}}" role="button">
+            retour fiche client
+        </a>
+
+    </div>
+<div class="row">
+    <div class="panel  panel-default col-lg-3"> 
+        <div class="panel-body ">
+            <h4>Info client</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Nom : {{cmd.client.nom}}</li>
+                <li class="list-group-item">Prenom : {{cmd.client.prenom}}</li>
+                <li class="list-group-item">date : {{cmd.dateCmd | date('d/m/Y')}}</li>
+                {% if cmd.solde == true %}
+                    <li class="list-group-item list-group-item-info">payé</li>
+                {% elseif  cmd.solde  == false %}
+                    <li class="list-group-item list-group-item-danger">a payer</li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+
+    
+    {{ include('GestionArticlesBundle:Partials:section-cmd.html.twig', {'cmd':cmd})}}
+</div>
+
+<div class="row" >
+    
+    
+    <div class="col-lg-offset-3  col-lg-9 sectionPayement" >
+        
+    {{ include('GestionArticlesBundle:Partials:sectionPayement.html.twig', {'cmd':cmd})}}
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $('#ajoute-article').click( function(){
+
+        var urlPatern = "{{path("gestion_ligne_cmd_create", {idArticle:'__idarticle__' , idCmd:cmd.id})}}";
+        
+        var propId = $('#gestion_articlesbundle_lignescommande_article option:selected').prop("value");
+        propId = $('#tagshidden').prop('value');
+        
+        var url = urlPatern.replace("__idarticle__", propId);
+
+            $.get( url)
+                .done(function(data){
+                    
+                    $("#corp-detail-commande").html(data);
+                 });
+    });
+   
+   
+        
+        $('#gestion_articlesbundle_paiements_montant').click(function(){
+            
+            var tot = $('#cmdTotalTTC').data('totalttc');
+            
+            $(this).val(tot);
+            
+        });
+        
+    
+   
+   
+
+</script>
+
+{% endblock %}
+
+

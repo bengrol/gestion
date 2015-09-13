@@ -1,0 +1,28 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Client {{parent()}}{% endblock %}
+    {% block stylesheets %} 
+        {{ parent() }}
+    {% endblock %}
+
+    {% block jumbotron %}
+        <div class="col-lg-12">
+            <h1>Creer client</h1>
+            
+                <p class="lead">blzblz</p>
+                
+                <p><a class="btn btn-lg btn-success" href="" role="button">Lien rapide 1</a></p>
+                
+                <div class="well">
+                    <form role="form" 
+                          action="{{ path('gestion_clients_create') }}" 
+                          method="POST" >
+                        {{  form_widget(form)}}
+                        
+                        <input type="submit" />
+                    </form>
+                </div>
+            
+        </div>
+    {% endblock %}

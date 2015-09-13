@@ -1,0 +1,40 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Client {{parent()}}{% endblock %}
+    {% block stylesheets %} 
+        {{ parent() }}
+    {% endblock %}
+
+    {% block jumbotron %}
+<div class="col-lg-12">
+    <h1>parametres</h1>
+
+    
+    {{form_widget(form)}}
+    
+    
+    <p>
+        <a class="btn btn-lg btn-success"  href="{{path('gestion_core_taxe_create')}}" 
+           role="button">create</a>
+        <a class="btn btn-lg btn-success"  href="{{path('gestion_core_taxe_get', {id:0 } )}}" 
+           role="button">get</a>
+        <a class="btn btn-lg btn-success"  href="{{path('gestion_core_taxe_update',  {id:0 })}}" 
+           role="button">update</a>
+        <a class="btn btn-lg btn-success"  href="{{path('gestion_core_taxe_delete', {id:0 })}}" 
+           role="button">delete</a>
+        
+
+    </p>
+    
+    
+    
+    <p>
+        <a class="btn btn-lg btn-success"  href="{{path('gestion_clients_get')}}" 
+           role="button">Liste Client</a>
+        <a class="btn btn-lg btn-success" href="{{path('gestion_clients_create')}}" 
+           role="button">nouvelle fiche</a>
+    </p>
+
+</div>
+    {% endblock %}

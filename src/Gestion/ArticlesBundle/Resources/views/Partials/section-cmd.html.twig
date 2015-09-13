@@ -1,0 +1,13 @@
+<div class="col-lg-9" id="section-cmd">
+    <div class="thumbnail">
+        {{ render(controller('GestionArticlesBundle:LignesCommande/LignesCommande:getOptionForm' , {'cmd':cmd})) }}    
+
+        <div class="caption">
+             <h4>Detail commande</h4>
+             <div id="corp-detail-commande">
+                {{render(controller('GestionArticlesBundle:LignesCommande/LignesCommande:get' , {'cmd':cmd})) }}
+             </div>
+        </div>
+
+    </div>
+</div>

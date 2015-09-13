@@ -1,0 +1,30 @@
+gestion_homepage:
+    path:     /
+    defaults: { _controller: GestionCoreBundle:Default:index }
+
+
+gestion_core:
+    resource: "@GestionCoreBundle/Resources/config/routing.yml"
+    prefix:   /parametres/
+
+gestion_core_public:
+    resource: "@GestionCoreBundle/Resources/config/routing_public.yml"
+    prefix:   /
+
+gestion_clients:
+    resource: "@GestionClientsBundle/Resources/config/routing.yml"
+    prefix:   /gestion/
+
+gestion_articles:
+    resource: "@GestionArticlesBundle/Resources/config/routing.yml"
+    prefix:   /gestion/
+
+
+gestion_articles_defaulft:
+    path:     /hello/{var}
+    defaults: { _controller: GestionArticlesBundle:Default:index}
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    

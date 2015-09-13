@@ -1,0 +1,80 @@
+gestion_articles_home:
+    path:     /
+    defaults: { _controller: GestionArticlesBundle:Articles\GetArticles:home}
+
+gestion_articles_create:
+    path:     /articles/new
+    defaults: { _controller: GestionArticlesBundle:Articles\CreateArticles:index }
+
+gestion_articles_get:
+    path:     /articles/get/{idArticle}
+    defaults: { _controller: GestionArticlesBundle:Articles\GetArticles:index , idArticle : "all"}
+
+gestion_articles_delete:
+    path:     /articles/delete/{idArticle}
+    defaults: { _controller: GestionArticlesBundle:Articles\DeleteArticles:index }
+
+gestion_articles_update:
+    path:     /articles/update/{idArticle}
+    defaults: { _controller: GestionArticlesBundle:Articles\UpdateArticles:index }
+
+
+
+gestion_categorie_getall_articles:
+    path:     /categories/articles/
+    defaults: { _controller: GestionArticlesBundle:Categories\Categories:GetAll , temp : "menu"}
+
+gestion_categorie_get_articles:
+    path:     /categories/getarticles/{id}
+    defaults: { _controller: GestionArticlesBundle:Categories\GetArticles:index , id : 0}
+
+
+
+
+gestion_articles_getDetailCommande:
+    path:     /articles/getDetailCommande/{id}
+    defaults: { _controller: GestionArticlesBundle:Commandes\Commandes:getDetail , id : 0}
+
+gestion_articles_getCommande:
+    path:     /articles/getCommande/{id}
+    defaults: { _controller: GestionArticlesBundle:Commandes\Commandes:get , id : 0}
+
+
+
+gestion_commandes_delete:
+    path:     /commande/delete/{id}
+    defaults: { _controller: GestionArticlesBundle:Commandes\Commandes:delete }
+    
+gestion_commandes_create:
+    path:     /commande/create/{client}
+    defaults: { _controller: GestionArticlesBundle:Commandes\Commandes:create }
+    
+    
+
+gestion_ligne_cmd_delete:
+    path:     /lg/delete/{id}
+    defaults: { _controller: GestionArticlesBundle:LignesCommande\LignesCommande:delete }
+
+gestion_ligne_cmd_create:
+    path:     /lg/create/{idArticle}/{idCmd}
+    defaults: { _controller: GestionArticlesBundle:LignesCommande\LignesCommande:create }
+
+gestion_edite_detail_lgcmd:
+    path:     /detail_lgcmd/edit
+    defaults: { _controller: GestionArticlesBundle:LignesCommande\DetailsLignesCommandes:edit}
+
+gestion_edite_lgcmd:
+    path:     /lgcmd/update/
+    defaults: { _controller: GestionArticlesBundle:LignesCommande\LignesCommande:update}
+
+
+
+
+gestion_paiement_create:
+    path:     /paiement/create/{idCmd}
+    defaults: { _controller: GestionArticlesBundle:Paiements\Paiements:create }
+
+gestion_ligne_paiement_delete:
+    path:     /paiement/delete/{id}
+    defaults: { _controller: GestionArticlesBundle:Paiements\Paiements:delete }
+

@@ -1,0 +1,18 @@
+{% extends "::baseGestion.html.twig" %}
+{% block title %}Mis à jour moyens de paiement {{parent()}}{% endblock %}
+{% block stylesheets %} {{ parent() }}{% endblock %}
+{% block jumbotron %}
+    <div class="col-lg-12">
+        <h3>Mettre à jour fiche Moyens de Paiement  : </h3>
+        <h4>{{ categorie.nom }}</h4>
+        <p class="lead">
+        <form role="form" action="{{ path('gestion_core_moyenspaiement_update', {id:categorie.id }) }}" method="POST" >
+        <p>{{form_widget(form)}}</p>
+        <input type="submit" class="btn btn-primary" /> 
+            <a href="{{ path('gestion_core_moyenspaiement_delete' , { id : categorie.id} ) }}"  class="btn btn-danger" >supprimer ce Moyen de Paiement</a>
+            <a class="btn btn-default" href="{{ path('gestion_core_moyenspaiement_homepage' ) }}" > 
+                Retour Liste </a>
+        </form>
+        </p>
+    </div>
+{% endblock %}

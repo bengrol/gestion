@@ -1,0 +1,3 @@
+public_prestations:
+    path: /prestations
+    defaults: { _controller : GestionCoreBundle:Default:prestations}

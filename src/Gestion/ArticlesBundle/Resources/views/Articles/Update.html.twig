@@ -1,0 +1,41 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Mettre à jour fiche Article {{parent()}}
+{% endblock %}
+{% block stylesheets %} 
+    {{ parent() }}
+
+{% endblock %}
+
+
+{% block jumbotron %}
+    <div class="col-lg-12">
+        <a href="{{ path('gestion_articles_get') }}" > Retour Liste </a>
+        
+        <h3>Mettre à jour fiche Client  : </h3>
+        
+        <h1>{{ article.nom }}</h1>
+        
+
+        <p class="lead">
+        <form role="form" action="{{ path('gestion_articles_update', {idArticle:article.id }) }}" method="POST" >
+            
+            <p>{{form_widget(form)}} 
+            </p>
+           
+            
+            <input type="submit" class="btn btn-primary" /> 
+            <a href="{{ path('gestion_articles_delete' , { idArticle : article.id} ) }}"  class="btn btn-danger" >supprimer cette fiche</a>
+            <a class="btn btn-default" href="{{ path('gestion_categorie_getall_articles') }}" > 
+                Retour Liste </a>
+            
+            
+            
+        </form>
+        
+        </p>
+
+            
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<?php
+
+namespace Gestion\ArticlesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gestion\ClientsBundle\Entity\Clients;
+
+/**
+ * Commandes
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Gestion\ArticlesBundle\Entity\CommandesRepository")
+ */
+class Commandes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateCmd", type="datetime")
+     */
+    private $dateCmd;
+
+    /**
+     * @var object 
+     * 
+     * @ORM\Column(name="lignesCmd", type="object")
+     * 
+     * @ORM\OneToMany(targetEntity="LignesCommande", mappedBy="commande")
+     */
+    private $lignesCmd;
+
+    
+    
+        /**
+     * @var object 
+     * 
+     * @ORM\Column(name="paiement", type="object")
+     * 
+     * @ORM\OneToMany(targetEntity="Paiements", mappedBy="commande")
+     */
+    private $paiement;
+    
+    
+    
+    
+        /**
+     *
+     * @var object 
+     * 
+     * @ORM\Column(name="client", type="object")
+     * 
+     * @ORM\ManyToOne(targetEntity="Clients", inversedBy="listeCommande")
+     * 
+     */
+    private $client;
+    
+    
+ 
+    
+    
+    
+
+
+}

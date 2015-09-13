@@ -1,0 +1,87 @@
+<?php
+
+namespace Gestion\ClientsBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Clients
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Gestion\ClientsBundle\Entity\ClientsRepository")
+ */
+class Clients
+{
+    
+    
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\NotBlank()
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255, nullable =true)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=255, nullable =true)
+     * 
+     * @Assert\Regex("/0[0-9]{9}/")
+     */
+    private $telephone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="portable", type="string", length=255, nullable =true)
+     * 
+     * @Assert\Regex("/0[0-9]{9}/")
+     */
+    private $portable;
+
+    
+    
+    
+      /**
+     * @var object
+     *
+     * @ORM\Column(name="listeCommande", type="object")
+     * @ORM\OneToMany(targetEntity="Commandes", mappedBy="client")
+     * 
+     */
+    private $listeCommande;
+    
+    
+      /**
+     * @var object
+     *
+     * @ORM\Column(name="rendezvous", type="object")
+     * @ORM\OneToMany(targetEntity="RendezVous", mappedBy="client")
+     * 
+     */
+    private $rendezVous;
+    
+
+
+    
+
+}

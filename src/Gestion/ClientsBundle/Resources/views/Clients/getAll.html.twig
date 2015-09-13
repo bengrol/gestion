@@ -1,0 +1,89 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Liste Client {{parent()}}
+{% endblock %}
+{% block stylesheets %} 
+    {{ parent() }}
+{% endblock %}
+
+
+{% block jumbotron %}
+<div class="col-lg-12"  >
+    <h1>Liste client</h1>
+</div>
+{% endblock %}
+
+
+{% block rowMarketing %}
+
+<div class="col-lg-12"  >
+
+    <div class="col-md-6">
+        <p>
+        <a class="btn btn-lg btn-success" href="{{path('gestion_clients_create')}}" 
+           role="button">nouvelle fiche</a>
+    </p>
+    </div>
+    <div class="col-md-6">
+        
+        <form action="#">
+            <label >recherche</label>
+                <input type="text" name="search" id="id_search" />
+        </form>
+    </div>
+    
+
+    <div class="panel  col-md-12">
+
+        
+        
+        
+        
+        <table id="table_example" class="table table-hover">
+
+<thead>
+    <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Telephone</th>
+        <th>Mail</th>
+        <th>Date naissance</th>
+        <th>Point Fidélite</th>
+        
+    </tr>
+</thead>
+
+<tbody>
+    {% for user in clients %}
+    <tr>
+        <th><a href="{{ path("gestion_clients_get", {'idClient': user.id}) }}">{{ user.nom }}</a></th>
+        <td>{{ user.prenom }}</td>
+        <td>{{ user.telephone }}</td>
+        
+        
+        {% if user.mail is empty %}
+        <td> - </td>
+        {% else  %}
+        <td>{{ user.mail }}  - <a href="mailto:{{ user.mail }}?Subject=Armany coiffure" target="_top"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></td>
+        {% endif %}
+        
+        
+        
+        <td>{{ user.dateNaissance is empty ? "" : user.dateNaissance | date("d/m/Y") }}</td>
+        <td><span class="badge">{{ user.pointFidelite is empty ? "0" : user.pointFidelite }}</span></td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+    </div>
+
+</div>
+<script type="text/javascript">
+$('input#id_search').quicksearch('table#table_example tbody tr');
+</script>
+
+{% endblock %}
+
+

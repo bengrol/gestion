@@ -1,0 +1,99 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Liste des Articles {{parent()}}
+{% endblock %}
+{% block stylesheets %} 
+    {{ parent() }}
+{% endblock %}
+
+
+{% block jumbotron %}
+<div class="col-lg-12"  >
+    <h1>Liste des articles</h1>
+</div>
+{% endblock %}
+
+
+{% block rowMarketing %}
+
+<div class="col-lg-12"  >
+    <div class="panel  col-md-12" >
+        <p>
+            
+            <a class="btn btn-lg btn-success"  href="{{path('gestion_articles_create')}}" 
+               role="button">nouvel article</a>
+        </p>
+
+    </div>
+    
+    
+   <div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+      {% for categorie in allCategories %}
+        <li role="presentation" {{ loop.index == 1 ?  'class="active"'  : ''}}>
+            
+            <a href="#{{ categorie.slug }}" aria-controls="{{ categorie.slug }}" role="tab" data-toggle="tab">{{ categorie.nom }} </a>
+        </li>
+      {% endfor %}    
+    
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="col-md-6">
+      <div class="tab-content">
+      {% for categorie in allCategories %}
+        <div role="tabpanel"  {{ loop.index == 1 ?  'class=" tab-pane active"'  : 'class="tab-pane" '}} id="{{ categorie.slug }}">
+                
+                {% if categorie.article is  empty  %}<p>Categorie Vide</p>{% else %}
+                <div class="list-group">
+                {% for art in categorie.article %}
+                            
+                                <a href="{{ path("gestion_articles_get", {'idArticle': art.id}) }}" class="list-group-item">
+                                    <h4 class="list-group-item-heading">{{ art.nom }}</h4>
+                                    <p class="list-group-item-text">{{ art.designation }} <span style="float:right">{{ art.prixHt }}€</span></p>
+                                    
+                                </a>
+                            
+                    
+                {% endfor %}
+                    </div>
+                {% endif %}
+        </div>
+      {% endfor %}
+      </div>
+  </div>
+
+</div>
+    
+    
+    
+    
+    <div class="panel  col-md-12">
+
+      {#% for article in listeArticle %}
+        <li>
+            <a href="{{ path("gestion_articles_get", {'idArticle': article.id}) }}">{{ article.nom }}</a></li>
+      {% endfor %#}
+
+
+
+    </div>
+
+</div>
+
+<script>
+    
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  
+});
+    
+    
+</script>
+
+
+{% endblock %}

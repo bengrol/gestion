@@ -1,0 +1,101 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}fiche Article {{parent()}}
+{% endblock %}
+{% block stylesheets %} 
+    {{ parent() }}
+{% endblock %}
+
+{% block jumbotron %}
+<div class="col-lg-12">
+    
+    <div class="row">
+        
+        
+        
+        <div class="panel panel-primary col-lg-4">
+            
+            <div class="panel-heading ">
+                <h1>{{ article.nom }}</h1>
+            </div>
+            <div class="panel-body panel-primary">
+            <ul class="list-group">
+                <li class="list-group-item">Nom : {{ article.nom }}</li>
+                <li class="list-group-item">désignation : {{ article.designation  }}</li>
+                <li class="list-group-item">prix Ht : {{ article.prixHt | number_format(2, ',', '.') }} €</li>
+                <li class="list-group-item">prix ttc : {{ (article.prixHt * (article.taxe.taux/100+1)) | number_format(2, ',', '.')}} €</li>
+                <li class="list-group-item">tva : {{ article.taxe.taux }} %</li>
+                <li class="list-group-item">catégorie : {{ ( article.categorie.nom )}}</li>
+                 {% if article.technique is not empty %}
+                    <li class="list-group-item">technique</li>
+                {% endif %}
+            </ul>
+            </div>
+            <div class="btn-group btn-group-justified">
+                <a class="btn btn-primary" 
+                   href="{{ path('gestion_articles_update' , { idArticle : article.id}) }}" 
+                   role="button">
+                    Mettre à jour
+                </a>
+
+                <a class="btn btn-default"  
+                   href="{{ path('gestion_categorie_getall_articles') }}" > 
+                    Retour Liste 
+                </a>
+            </div>
+        </div>
+     
+            
+    </div>
+    <div class="row">
+        <div class="detailCmd "> 
+
+        
+        
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    
+     var url = "{{path("gestion_articles_getDetailCommande")}}";
+       console.log(url);
+    
+    $( ".list-group-item > span" ).click(function() {
+        
+      //console.log($(this).attr('id'));
+       url += "/"+$(this).attr('id');
+       
+       console.log(url);
+       
+              $.get( url)
+                .done(function(data) 
+                 {
+                    $(".detailCmd").html(data);
+                 });
+       
+       
+    });
+    
+    
+    
+   /*    
+    $( ".detailCmd" ).click(function() {
+        
+       
+        
+      $.get( url)
+        .done(function(data) 
+            {
+                $(".detailCmd").html(data);
+            });
+    });
+    
+    */
+    
+    
+    
+</script>
+{% endblock %}

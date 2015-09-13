@@ -1,0 +1,23 @@
+<div class="footer " >
+    <div class="container">
+        <div class="col-lg-4">
+            <p>{{ infos.adresse}} - <br /> {{ infos.code_postal}} {{ infos.ville}} <br />
+                <a href="tel:+33{{ infos.telephones.fix}}">{{ infos.telephones.fix}}</a>
+            </p>
+            <ul class="list-unstyled">
+                {% for nom, link in infos.social %}
+                    <li><a href="{{ link }}">{{ nom}}</a></li>
+                {% endfor %}
+            </ul>
+            
+        </div>
+        <div class="col-lg-6">
+            <ul class="list-unstyled"><li><a href="">&agrave; propos de moi</a></li></ul>
+        </div>
+        <div class="col-lg-2">
+           <ul class="nav navbar-nav navbar-right">
+               <li><a href="{{ path('fos_user_security_login') }}"> <span class="glyphicon  glyphicon-user" aria-hidden="true"></span></a></li>
+           </ul>
+        </div>
+    </div>
+</div>

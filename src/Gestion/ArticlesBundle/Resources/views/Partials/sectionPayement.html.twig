@@ -1,0 +1,129 @@
+
+<div class="thumbnail col-lg-6 " >
+    <div class="caption">
+        <h3>paiement(s)</h3>
+        <table border="0" class="table">
+            <thead>
+                <tr>
+                    <th>type</th>
+                    <th>employé</th>
+                    <th>€</th>
+                    {% if  cmd.solde  == false %}
+                    <th>action</th>    
+                    {% endif %}
+                    
+                </tr>
+            </thead>
+            <tbody> 
+              {% set total = 0 %}
+                {% for l in cmd.paiement %} 
+                  {% set total = total + l.montant %}
+                    <tr>
+                        <td>{{l.moyenPaiement.nom}} </td>
+                        <td>{{l.salarie is not null ? l.salarie.nom : 'nul' }} </td>
+                        <td>{{l.montant}} €</td>
+                        {% if  cmd.solde  == false %}
+                            <td>
+                                
+                                <button class="btn btn-default supp-lg-paiement" data-id="{{l.id}}">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        {% endif %}
+                        
+                         
+                    </tr>
+                            {% endfor %}
+                    <tr class="info">
+                        <td></td>
+                        <td>total</td>
+                        <td>{{total}} €</td>
+                    </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+{% if  cmd.solde  == false %}
+
+<div class="panel panel-default col-lg-6">
+    
+    <h3 class="">ajouter paiement</h3>
+    
+    <div class="panel-body">
+        
+        
+        <div class="btn-group btn-group-lg bg-info" style="margin-top: 20px" role="group" aria-label="...">
+           {{ render(controller('GestionArticlesBundle:Paiements/Paiements:create', {'idCmd':cmd.id}))}}
+        </div>
+        
+        
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    var $sec = $('.sectionPayement');
+    
+     $('.supp-lg-paiement').click(function(){
+       var urlPatern = "{{path("gestion_ligne_paiement_delete", {id:'__idlignepaiement__'})}}";
+        console.log($(this).attr('data-id'));
+       
+       var url = urlPatern.replace("__idlignepaiement__", $(this).attr('data-id'));
+       $.get( url)
+           .done(function(data){
+               $sec.html(data);
+            })
+           .fail(function() {
+               alert( "error" );
+           });
+
+   });
+    
+
+  
+    $('#validePaiement').click(function(){
+        
+        var valPaiement = $('#gestion_articlesbundle_paiements_montant').val();
+        
+        
+       var dataSend = $('#formP').serialize();
+       console.log(valPaiement);
+       
+       var url = "{{path('gestion_paiement_create', {'idCmd':cmd.id})}}";
+       //console.log(url);
+       if(!valPaiement){
+           alert('Aucun montant saisie !! ');
+       }else{
+           
+       
+       
+    $.post( url, dataSend)
+            .done(function(resultOk){
+                $sec.html(resultOk);
+           })
+           .fail(function() {
+               alert( "error" );
+           });
+           
+
+           }
+           
+           
+
+   });
+</script>
+
+
+
+
+{% endif %}
+
+
+
+

@@ -1,0 +1,59 @@
+<?php
+
+namespace Gestion\ArticlesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Taxes
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Gestion\ArticlesBundle\Entity\TaxesRepository")
+ */
+class Taxes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="taux", type="float")
+     * 
+     */
+    private $taux;
+    
+    
+    /**
+     *
+     * @var object 
+     * 
+     * @ORM\Column(name="articles", type="object")
+     * 
+     * @ORM\OneToMany(targetEntity="Articles", mappedBy="taxe")
+     *  
+     */
+    private $articles;
+    
+    
+     
+    
+    
+    
+    
+    
+    
+}

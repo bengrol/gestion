@@ -1,0 +1,7 @@
+parameters:
+#    gestion_core.example.class: Gestion\CoreBundle\Example
+
+services:
+#    gestion_core.example:
+#        class: %gestion_core.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

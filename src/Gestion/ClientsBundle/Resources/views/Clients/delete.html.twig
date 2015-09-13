@@ -1,0 +1,18 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Suppression Client {{parent()}}{% endblock %}
+    {% block stylesheets %} 
+        {{ parent() }}
+    {% endblock %}
+
+    {% block jumbotron %}
+        <div class="col-lg-12">
+            <h1>suppression du client n° {{idClient}} </h1>
+            
+                <p class="lead">blzblz</p>
+                
+                <p><a class="btn btn-lg btn-success" href="" role="button">Lien rapide 1</a></p>
+            
+        </div>
+    {% endblock %}

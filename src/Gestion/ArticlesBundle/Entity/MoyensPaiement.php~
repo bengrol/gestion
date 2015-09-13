@@ -1,0 +1,47 @@
+<?php
+
+namespace Gestion\ArticlesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MoyensPaiement
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Gestion\ArticlesBundle\Entity\MoyensPaiementRepository")
+ */
+class MoyensPaiement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+/**
+ *
+ * @var type object
+ * 
+ * @ORM\Column(name="paiement", type="object")
+ * 
+ * @ORM\OneToMany(targetEntity="", mappedBy="$moyenPaiement")
+ * 
+ * 
+ */
+    private $paiement;
+    
+    
+    
+    
+    
+}

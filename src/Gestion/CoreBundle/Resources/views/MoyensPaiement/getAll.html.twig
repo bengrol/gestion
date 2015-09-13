@@ -1,0 +1,28 @@
+{% extends "::baseGestion.html.twig" %}
+{% block title %}Liste des Moyens de Paiement {{parent()}}{% endblock %}
+    {% block stylesheets %} 
+        {{ parent() }}
+    {% endblock %}
+{% block jumbotron %}
+
+<h1>parametres</h1>
+<h3>Gestion des Moyens de Paiement</h3>
+<p>
+    <a class="btn btn-sm btn-success"  
+       href="{{path('gestion_core_moyenspaiement_create')}}" 
+           role="button">Nouveau Moyens de Paiement</a>
+</p>
+<div class="col-lg-6" >
+{% for categorie in all %}
+    <ul class="list-group">
+        <li class="list-group-item ">
+           Nom :  {{ categorie.nom }} <br />
+
+           <a class="btn btn-sm btn-primary" 
+              href="{{path('gestion_core_moyenspaiement_update', {id:categorie.id})}}" 
+           role="button">modifier</a>
+        </li> 
+    </ul>
+{% endfor %}
+</div>
+{% endblock %}

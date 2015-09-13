@@ -1,0 +1,10 @@
+<div class="btn-group "  data-toggle="buttons">
+{%for mp in all %}    
+  <label class="btn btn-info {% if loop.first %}active{% endif %}" id="moyen-paiement">
+    <input type="radio" name="options" 
+           id="{{ mp.id }}" autocomplete="off" 
+{% if loop.first %}checked{% endif %}> {{ mp.nom }}
+  </label>
+{% endfor %}
+
+</div>

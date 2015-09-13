@@ -1,0 +1,25 @@
+gestion_clients_home:
+    path:     /clients/
+    defaults: { _controller: GestionClientsBundle:GetClients:home}
+    
+
+gestion_clients_get:
+    path:     /clients/get/{idClient}
+    defaults: { _controller: GestionClientsBundle:GetClients:index , idClient : "all" }
+    
+gestion_clients_update:
+    path:     /clients/update/{idClient}
+    defaults: { _controller: GestionClientsBundle:UpdateClients:index }
+    
+
+gestion_clients_delete:
+    path:     /clients/delete/{idClient}
+    defaults: { _controller: GestionClientsBundle:DeleteClients:index }
+
+gestion_clients_create:
+    path:     /clients/create/
+    defaults: { _controller: GestionClientsBundle:CreateClients:index }
+
+gestion_clients_jeuxTest:
+    path:     /jeuxTest
+    defaults: { _controller: GestionClientsBundle:jeuxTest:index }

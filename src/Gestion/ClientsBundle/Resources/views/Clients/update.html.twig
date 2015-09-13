@@ -1,0 +1,72 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Mettre à jour fiche Client {{parent()}}
+{% endblock %}
+{% block stylesheets %} 
+    {{ parent() }}
+{% endblock %}
+
+{% block jumbotron %}
+    <div class="col-lg-12">
+        <a href="{{ path('gestion_clients_get') }}" > Retour Liste Client </a>
+        
+        <h3>Mettre à jour fiche Client  : </h3>
+        
+        <h1>{{ client.nom }} - {{ client.prenom }}</h1>
+
+        <p class="lead">
+        <form role="form" action="{{ path('gestion_clients_update', {idClient:client.id }) }}" method="POST" >
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                {{ form_label(form.nom) }}
+                {{ form_errors(form.nom) }}
+                {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                {{ form_label(form.prenom) }}
+                {{ form_errors(form.prenom) }}
+                {{ form_widget(form.prenom, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                {{ form_label(form.telephone) }}
+                {{ form_errors(form.telephone) }}
+                {{ form_widget(form.telephone, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                {{ form_label(form.mail) }}
+                {{ form_errors(form.mail) }}
+                {{ form_widget(form.mail, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                {{ form_label(form.portable) }}
+                {{ form_errors(form.portable) }}
+                {{ form_widget(form.portable, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                {{ form_label(form.pointFidelite) }}
+                {{ form_errors(form.pointFidelite) }}
+                {{ form_widget(form.pointFidelite, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+                <div class="form-group">
+                {{ form_label(form.datenaissance) }}
+                {{ form_errors(form.datenaissance) }}
+                {{ form_widget(form.datenaissance, { 'attr': {'class': 'form-control'} }) }}
+                </div>
+            </div>
+                
+                
+               
+            {{ form_widget(form._token) }}
+            
+            <input type="submit" /> <a href="{{ path('gestion_clients_delete', {idClient:client.id }) }}" >supprimer cette fiche</a>
+        </form>
+        
+        </p>
+
+            
+    </div>
+{% endblock %}

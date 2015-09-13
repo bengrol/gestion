@@ -1,0 +1,25 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Client {{parent()}}{% endblock %}
+    {% block stylesheets %} 
+        {{ parent() }}
+    {% endblock %}
+
+    {% block jumbotron %}
+<div class="col-lg-12">
+    <h1>Gestion des Clients</h1>
+
+    <p>
+        <a class="btn btn-lg btn-success" 
+           href="{{path('gestion_clients_get')}}" 
+           role="button">Liste Client</a>
+        <a class="btn btn-lg btn-success" 
+           href="{{path('gestion_clients_create')}}" 
+           role="button">nouvelle fiche</a>
+
+
+    </p>
+
+</div>
+    {% endblock %}

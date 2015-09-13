@@ -1,0 +1,69 @@
+{% if cmd.solde %}
+<div class="panel panel-info">
+{% endif%}
+{% if not cmd.solde %}
+<div class="panel panel-danger">
+    
+{% endif%}
+
+
+    <div class="panel-heading">
+        <h2>Details Commande # {{cmd.id}}
+            {% if not cmd.solde %} <strong> -- A payer -- </strong>{% endif%}
+    </h2>
+        <div class="btn-group btn-group-sm">
+            <a class="btn btn-primary" 
+               href="{{path ('gestion_articles_getCommande', {id:cmd.id})}}" 
+               role="button">
+                Voir le detail
+            </a>
+
+        </div>
+        
+    </div>
+    
+    <div class=" panel-body">
+        
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>nom article</th>
+                    <th>Prix TTC</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+    {% set totalTTC = 0 %}
+    {% for l in cmd.lignesCommandes %}
+        
+
+            
+                <tr>
+
+                    <td>{{l.article.nom}}
+                        {% if l.technique%}
+                            <p class="bg-success">
+                                {{ l.detail }}
+                            </p>
+                        {% endif %}
+                    </td>
+                    <td>{{((l.prixHt * l.tva)/100 + l.prixHt ) | number_format(2 ) }} €</td>
+                </tr>
+    {% endfor %}
+               
+            </tbody>
+
+        </table>
+
+        <li class="list-group-item">
+            <span><strong>total ttc = {{cmd.getMontantTTC() | number_format(2 )}} €</strong></span>
+        </li>
+
+        
+    </div>
+</div>
+    
+    

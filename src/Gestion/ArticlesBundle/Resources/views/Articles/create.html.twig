@@ -1,0 +1,52 @@
+{% extends "::baseGestion.html.twig" %}
+
+
+{% block title %}Client {{parent()}}{% endblock %}
+    {% block stylesheets %} 
+        {{ parent() }}
+    {% endblock %}
+
+    {% block jumbotron %}
+        
+
+
+<div class="col-lg-6 ">
+    <h1>Creer Article</h1>
+
+    {{ form_start(form, {'action': path('gestion_articles_create'), 'method': 'POST'}) }}
+
+
+        {{ form_errors(form) }}
+
+        {{ form_row(form.nom) }}
+        {{ form_row(form.designation) }}
+
+        {{ form_row(form.prixHt) }}
+
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ form_row(form.technique) }}
+                <span>Si oui - possibilité d'ajouter des details techniques sur les fiches clients</span>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ form_row(form.editable) }}
+                <span>Si oui - les prix TTCC et la designation seront modifiable directement sur la fiche client</span>
+            </div>
+        </div>
+    
+        {{ form_row(form.taxe) }}
+        {{ form_row(form.categorie) }}
+    
+        <input type="submit" class="btn btn-primary" /> 
+        <a class="btn btn-default"  
+           href="{{ path('gestion_articles_get' ) }}" > 
+            Retour Liste 
+        </a>
+    {{ form_end(form) }}
+    
+</div>
+    {% endblock %}
+
