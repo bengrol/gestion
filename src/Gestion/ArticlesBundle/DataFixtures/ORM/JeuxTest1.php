@@ -26,7 +26,7 @@ class JeuxTest1 extends AbstractFixture implements OrderedFixtureInterface{
         //creation categorie produits
         $catHomme = new Categories("Homme");
         $catFemme = new Categories("Femme");
-        $catEnfant = new Categories("EnfantAdo");
+        $catEnfant = new Categories("Enfant et Ado");
         $catProduit = new Categories("Produit");
         
         array_push($topersist, $catHomme, $catFemme, $catEnfant, $catProduit); 

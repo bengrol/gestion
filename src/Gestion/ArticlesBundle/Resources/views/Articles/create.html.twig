@@ -10,43 +10,75 @@
         
 
 
-<div class="col-lg-6 ">
+<div class="col-lg-12 ">
     <h1>Creer Article</h1>
 
     {{ form_start(form, {'action': path('gestion_articles_create'), 'method': 'POST'}) }}
-
-
         {{ form_errors(form) }}
 
-        {{ form_row(form.nom) }}
-        {{ form_row(form.designation) }}
-
-        {{ form_row(form.prixHt) }}
-
-
-        <div class="panel panel-default">
-            <div class="panel-body">
-                {{ form_row(form.technique) }}
-                <span>Si oui - possibilité d'ajouter des details techniques sur les fiches clients</span>
-            </div>
+  
+    <div class="col-lg-4">  
+        <div class="input-group">
+            {{ form_row(form.nom, { 'attr': {'class': 'form-control'} }) }}
         </div>
-        <div class="panel panel-default">
-            <div class="panel-body">
-                {{ form_row(form.editable) }}
-                <span>Si oui - les prix TTCC et la designation seront modifiable directement sur la fiche client</span>
-            </div>
-        </div>
+        <div class="input-group">
+            {{ form_row(form.designation, { 'attr': {'class': 'form-control'} }) }}
+        </div>    
+        <div class="input-group">
+            {{ form_row(form.prixHt, { 'attr': {'class': 'form-control'} }) }}
+        </div>    
+        
+    </div>
+    <div class="col-lg-4">  
+        <div class="input-group">
+            {{ form_row(form.taxe, { 'attr': {'class': 'form-control'} }) }}
+        </div> 
+        <div class="input-group">
+            {{ form_row(form.categorie, { 'attr': {'class': 'form-control'} }) }}
+        </div> 
+        
+    </div>
+    <div class="col-lg-4"> 
+         
+        
+        <div class="input-group" >
+            {{ form_label(form.technique) }}
+            {{ form_errors(form.technique) }}
+            <span class="glyphicon glyphicon-question-sign" style="padding-left: 1em" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Si oui - possibilité d'ajouter des details techniques sur les fiches clients"></span>
+            {{ form_widget(form.technique,  { 'attr': {'class': 'form-control'} }) }}
+            
+        </div>    
+
+        <div class="input-group" >
+            {{ form_label(form.editable) }}
+            {{ form_errors(form.editable ) }}
+            <span class="glyphicon glyphicon-question-sign" style="padding-left: 1em" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Si oui - les prix TTCC et la designation seront modifiable directement sur la fiche client"></span>
+            {{ form_widget(form.editable, { 'attr': {'class': 'form-control'} }) }}
+        </div>    
+
+        
     
-        {{ form_row(form.taxe) }}
-        {{ form_row(form.categorie) }}
-    
+        <div class="input-group">
+        {{ form_row(form.public, { 'attr': {'class': 'form-control'} }) }}
+        </div> 
+    </div>
+      
+    <div class="col-lg-12" style="padding-top: 1em">     
         <input type="submit" class="btn btn-primary" /> 
-        <a class="btn btn-default"  
-           href="{{ path('gestion_articles_get' ) }}" > 
-            Retour Liste 
-        </a>
-    {{ form_end(form) }}
-    
+        <a class="btn btn-default"  href="{{ path('gestion_articles_get' ) }}" > Retour Liste </a>
+    </div>
+        {{ form_end(form) }}
+      
 </div>
+
+<script>
+    
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+    
+</script>
+
+
     {% endblock %}
 

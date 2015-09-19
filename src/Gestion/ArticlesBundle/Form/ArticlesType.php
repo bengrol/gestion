@@ -32,6 +32,11 @@ class ArticlesType extends AbstractType
                 'label'  => 'Produit technique ?',
                 'data' => false
             ))
+            ->add('public', 'choice', array(
+                 'choices'   => array(true => 'Oui', false => 'Non'),
+                'label'  => 'Produit affiché sur page web ?',
+                'data' => true
+            ))
             ->add('editable', 'choice', array(
                  'choices'   => array(true => 'Oui', false => 'Non'),
                 'label'  => 'Produit éditable ?',

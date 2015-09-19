@@ -8,7 +8,7 @@
                     <th>type</th>
                     <th>employé</th>
                     <th>€</th>
-                    {% if  cmd.solde  == false %}
+                    {% if  cmd.solde  == false or is_granted("ROLE_ADMIN") %}
                     <th>action</th>    
                     {% endif %}
                     
@@ -22,7 +22,7 @@
                         <td>{{l.moyenPaiement.nom}} </td>
                         <td>{{l.salarie is not null ? l.salarie.nom : 'nul' }} </td>
                         <td>{{l.montant}} €</td>
-                        {% if  cmd.solde  == false %}
+                        {% if  cmd.solde  == false or is_granted("ROLE_ADMIN")%}
                             <td>
                                 
                                 <button class="btn btn-default supp-lg-paiement" data-id="{{l.id}}">
@@ -47,7 +47,7 @@
 
 </div>
 
-{% if  cmd.solde  == false %}
+{% if  cmd.solde  == false or is_granted("ROLE_ADMIN")%}
 
 <div class="panel panel-default col-lg-6">
     

@@ -14,24 +14,141 @@
 </style>
 
 <div class="col-lg-12">
-    <h1>accueil</h1>
 
     
+    <div >
+        <h2>Le Salon</h2>
+
+        <p>Armany, est un salon de coiffures pour hommes et femmes avec un espace dédié au rasage pour hommes. Armany utilise les produits L'Oreal.</p>
+
+        <p>Toute l'équipe d'Armany coiffure vous accueil : </p>
+        <ul>
+            <li>du mardi au jeudi de 09:00-12:00 et 14:00-19:00</li>
+            <li>le Vendredi de 09:00-19:00</li>
+            <li>le samedi de  08:30-16:00</li>
+        </ul>
+    </div>
+
+    <img src="{{ path('gestion_homepage') }}img/armany-devanture.jpg" class="">
+    <div class="col-lg-12">
+        <h2 id="link-prestations">Prestations</h2>
+        <a href="#">haut de page</a>
+
+        <div class="col-lg-8 col-lg-offset-2"  >
+
+            <div role="tabpanel">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+      {% for categorie in allCategories %}
+                    <li role="presentation" {{ loop.index == 1 ?  'class="active"'  : ''}}>
+
+                        <a href="#{{ categorie.slug }}" aria-controls="{{ categorie.slug }}" role="tab" data-toggle="tab">{{ categorie.nom }} </a>
+                    </li>
+      {% endfor %}    
+
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+      {% for categorie in allCategories %}
+                    <div role="tabpanel"  {{ loop.index == 1 ?  'class=" tab-pane active"'  : 'class="tab-pane" '}} id="{{ categorie.slug }}">
+
+
+                        <table class="table table-hover table-bordered" >
+
+                            <thead>
+
+                                <tr>
+                                    <th>designation </th>
+                                    <th>prix en euros </th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+                {% if categorie.article is  empty  %}
+                            <p></p>
+                            <tr>
+                                <td colspan="2">Categorie Vide</td>
+
+                            </tr>
+{% else %}
+
+
+
+                {% for art in categorie.article %}
+                    {% if art.public %}
+                            <tr>
+                                <td>{{ art.designation }}   </td>
+                                <td>{{ (art.prixHt * (art.taxe.taux/100+1)) | round(2, 'ceil')}} €  </td>
+                            </tr>
+
+
+                    {% endif %}
+                {% endfor %}
+
+                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+      {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <script>
     
+        $('#myTab a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+  
+        });
+    
+    
+        </script>
+    </div>
 
+   <div class="col-lg-12" style="  margin-bottom: 3em;">
+        <h2 id="link-contact" >Contact</h2>
+<a href="#">haut de page</a>
 
+        <div class="col-lg-8 col-lg-offset-2">
+            <form action="">
+            
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="nom" aria-describedby="nom">
+                </div>
+            
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="prenom" aria-describedby="prenom">
+                </div>
+            
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="message" aria-describedby="message">
+                </div>
+            
+                
+                <textarea class="form-control" placeholder="message"></textarea>
+                <div class="input-group">
+                    <input type="submit" class="form-control" value="envoyer">
+                </div>
+            
+            </form>
+        </div>
+
+    </div> 
+    
+    
+    
+    
+    
+    
 </div>
 
-<script>
 
-    
-</script>
-    
-    
-    
-    
-                
-    
+
+
     
 </div>
     {% endblock %}

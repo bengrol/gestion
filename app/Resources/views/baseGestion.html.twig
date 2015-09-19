@@ -40,10 +40,14 @@
     </head>
     <body>
         <div class="row">
-        <a href="{{ path('gestion_homepage') }}">
-            <img src="{{ path('gestion_homepage') }}img/logo-mr.png" alt="" class="img-logo">
-        </a>
-            </div>
+            <div class="container">
+                <a href="{{ path('gestion_articles_home') }}">
+                    <img src="{{ path('gestion_homepage') }}img/logo-mr.png" alt="" class="img-logo">
+                </a>
+                
+                <span style="float: right">{% if is_granted("ROLE_SALARIE") %} compte : {{ app.user.username }} {% endif %}</span>
+                <h1>Gestion</h1>    </div>
+        </div>
         <div class="container-fluid">
             {% block menu %}
                 {% include 'GestionCoreBundle:public:header.html.twig' %}

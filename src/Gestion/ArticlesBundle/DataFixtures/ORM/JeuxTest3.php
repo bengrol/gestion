@@ -36,7 +36,7 @@ class JeuxTest3 extends AbstractFixture implements OrderedFixtureInterface{
 
        // create commandes
        $cmdClient1 = new Commandes($client1);
-       $cmdClient1->setRemise(5);
+       //$cmdClient1->setRemise(5);
        $cmdClient2 = new Commandes($client1);
        $cmdClient3 = new Commandes($client1);
        $cmdClient4 = new Commandes($client2);

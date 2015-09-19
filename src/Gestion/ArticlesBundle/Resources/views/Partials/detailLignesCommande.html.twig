@@ -6,7 +6,7 @@
             <th style="width: 10%">Prix HT</th>
             <th style="width: 5%">TVA</th>
             <th style="width: 40%;text-align: center;">Prix TTC</th>
-            {% if  cmd.solde  == false %}
+            {% if  cmd.solde  == false or is_granted("ROLE_ADMIN") %}
                 <th style="width: 5%">Supp</th>
             {% endif %}
         </tr>
@@ -22,7 +22,7 @@
             <td>{{ l.salarie ? (l.salarie.nom | slice(0, 3)) : '#' }} </td>
             
             <!-- editable designation -->
-            <td class="{{ (l.editable and cmd.solde  == false) ? "tdeditable" : ''}}">
+            <td class="{{ (l.editable and (cmd.solde  == false or(is_granted("ROLE_ADMIN")) )) ? "tdeditable" : ''}}">
                 <span class="{{ l.editable ?  "tdeditablespan" : '' }}">{{l.designation}}</span>
                 
                 <form style="display:none" class="{{ l.editable ?  "tdeditableform"  : ''}}">
@@ -50,7 +50,7 @@
             
             <!-- editable prixTTC -->
             {% set TTClgn = (l.prixHt * l.tva)/100 + l.prixHt  %}
-            <td style="font-size: 1.5em;text-align: center;" class="{{ (l.editable and cmd.solde  == false )?  "tdeditable" : '' }}">
+            <td style="font-size: 1.5em;text-align: center;" class="{{ (l.editable and (cmd.solde  == false or is_granted("ROLE_ADMIN")) )?  "tdeditable" : '' }}">
                 <span class="{{ l.editable  ? "tdeditablespan" : ''}}">
                     {{ l.prixHt ? ( TTClgn | number_format(2 ) ~'€') : ""}}
                 </span>
@@ -72,7 +72,7 @@
                     
             </td>
             <!-- /editable prixTTC -->
-                {% if  cmd.solde  == false %}
+                {% if  cmd.solde  == false or is_granted("ROLE_ADMIN") %}
             <td>
                     <button class="btn btn-default supp-lg" data-id="{{l.id}}">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
@@ -87,7 +87,7 @@
         <tr>
             
             <td >tech</td>
-                {% if  cmd.solde  == false %}
+                {% if  cmd.solde  == false or is_granted("ROLE_ADMIN")%}
                 
                 
                     
@@ -142,7 +142,7 @@
 </table>
 
 
-                {% if not cmd.solde  %}
+                {% if not cmd.solde or is_granted("ROLE_ADMIN") %}
                  <div class="btn-group btn-group-justified">
                      <a class="btn btn-danger" 
                         href="{{path('gestion_commandes_delete', {id:cmd.id})}}" 

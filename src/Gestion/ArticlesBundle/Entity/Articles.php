@@ -53,6 +53,12 @@ class Articles
      * @ORM\Column(name="editable", type="boolean") 
      */
     private $editable;
+    /**
+     *
+     * @var boolean
+     * @ORM\Column(name="public", type="boolean") 
+     */
+    private $public;
 
     
     /* ----------------    ----------------*/
@@ -86,7 +92,7 @@ class Articles
      * @param type Taxes $taxe
      * @param type Categorie $categorie
      */
-    function __construct($nom, $prixHt, $taxe, $categorie, $tech = false, $edit = false) {
+    function __construct($nom, $prixHt, $taxe, $categorie, $tech = false, $edit = false, $public = true) {
         $this->nom = $nom;
         $this->editable = $edit;
         $this->prixHt = $prixHt;
@@ -94,6 +100,7 @@ class Articles
         $this->categorie = $categorie;
         $this->ligneCommande = new ArrayCollection();
         $this->technique = $tech;
+        $this->public = $public;
     }
 
     public function getLigneCommande() {
@@ -198,6 +205,7 @@ class Articles
         return $this;
     }
 
+    
     /**
      * Get taxe
      *
@@ -249,6 +257,14 @@ class Articles
 
     public function setEditable($editable) {
         $this->editable = $editable;
+    }
+
+    public function getPublic() {
+        return $this->public;
+    }
+
+    public function setPublic($public) {
+        $this->public = $public;
     }
 
     

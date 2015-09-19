@@ -25,11 +25,15 @@
 
     </head>
     <body>
-        <div class="row">
-        <a href="{{ path('gestion_homepage') }}">
-            <img src="{{ path('gestion_homepage') }}img/logo-mr.png" alt="" class="img-logo">
-        </a>
-            </div>
+        <div class="container">
+            <div class="row">
+            <a href="{{ path('gestion_homepage') }}">
+                <img src="{{ path('gestion_homepage') }}img/logo-mr.png" alt="" class="img-logo">
+               
+            </a>
+                <h1 class="titre-baseline">Salon de coiffure Homme et Femme - Barbier</h1>
+                </div>
+        </div>
         <div class="container-fluid">
             {% block menu %}
                 {% include 'GestionCoreBundle:public:header_public.html.twig' %}

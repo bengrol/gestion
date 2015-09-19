@@ -23,13 +23,17 @@
             <ul class="list-group">
                 <li class="list-group-item">Nom : {{ article.nom }}</li>
                 <li class="list-group-item">désignation : {{ article.designation  }}</li>
+                
                 <li class="list-group-item">prix Ht : {{ article.prixHt | number_format(2, ',', '.') }} €</li>
                 <li class="list-group-item">prix ttc : {{ (article.prixHt * (article.taxe.taux/100+1)) | number_format(2, ',', '.')}} €</li>
+                
+                <li class="list-group-item">technique  : {{ article.technique ? "oui": "non" }}</li>
+                <li class="list-group-item">affiché sur web  : {{ article.public ? "oui": "non" }}</li>
+                <li class="list-group-item">editable  : {{ article.editable ? "oui": "non" }}</li>
+                
                 <li class="list-group-item">tva : {{ article.taxe.taux }} %</li>
                 <li class="list-group-item">catégorie : {{ ( article.categorie.nom )}}</li>
-                 {% if article.technique is not empty %}
-                    <li class="list-group-item">technique</li>
-                {% endif %}
+                
             </ul>
             </div>
             <div class="btn-group btn-group-justified">

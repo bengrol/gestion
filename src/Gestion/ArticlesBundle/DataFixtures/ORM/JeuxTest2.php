@@ -76,62 +76,67 @@ class JeuxTest2 extends AbstractFixture implements OrderedFixtureInterface, Cont
        
        $catHomme = $this->getReference("Homme");
        $catFemme = $this->getReference("Femme");
-       $catEnfant = $this->getReference("EnfantAdo");
+       $catEnfant = $this->getReference("Enfant et Ado");
        $catProd = $this->getReference("Produit");
        
        
        
        
        $listeArticleHomme = array(
-           array('nom' => 'forf sh cp coif' , 'tarif' =>13.33 ),
-array('nom' => 'forf cp coif' , 'tarif' =>10.83 ),
-array('nom' => 'forf sh couronne coif' , 'tarif' =>10.83 ),
-array('nom' => 'forf Sh cp coif rasage trad' , 'tarif' =>25 ),
-array('nom' => 'forf Sh cp coif taille au rasoir' , 'tarif' =>25 ),
-array('nom' => 'forf Sh cp coif rasage design' , 'tarif' =>29.17 ),
 
-array('nom' => 'cp couronne' , 'tarif' =>7.5 ),
-array('nom' => 'permanente homme' , 'tarif' =>15.83 ),
-array('nom' => 'couleur homme' , 'tarif' =>17.5 ),
+array('nom' => 'forf sh,cp,coif' , 'tarif' =>13.33 , 'designation'=>'shampoing, coupe, coiffage ' ),
+array('nom' => 'forf cp,coif' , 'tarif' =>10.83 , 'designation'=>'coupe, coiffage ' ),
+array('nom' => 'forf sh,cr,coif' , 'tarif' =>10.83 , 'designation'=>'shampoing, couronne, coiffage ' ),
+array('nom' => 'forf Sh,cp,coif,ras trad' , 'tarif' =>25.00 , 'designation'=>'shampoing, coupe, coiffage, rasage traditionel' ),
+array('nom' => 'forf Sh,cp,coif,taille au ras' , 'tarif' =>25.00 , 'designation'=>'shampoing, coupe, coiffage, taille au rasoir' ),
+array('nom' => 'forf Sh,cp,coif,ras design' , 'tarif' =>29.17 , 'designation'=>'shampoing, coupe, coiffage, rasage design' ),
 
-array('nom' => 'Rasage trad à l\'ancienne (cp choux)' , 'tarif' =>13.33 ),
-array('nom' => 'Rasage design' , 'tarif' =>17.5 ),
-array('nom' => 'entretien tracer de barbe (-12 jours)' , 'tarif' =>10.83 ),
-array('nom' => 'taille barbe au rasoir' , 'tarif' =>12.5 ),
-array('nom' => 'taille barbe aux ciseaux' , 'tarif' =>5.83 ),
-array('nom' => 'taille barbe tondeuse' , 'tarif' =>4.17 ),
-array('nom' => 'taille moustache' , 'tarif' =>2.5 ),
+array('nom' => 'cp, cr' , 'tarif' =>7.50 , 'designation'=>'coupe, couronne' ),
+array('nom' => 'perm Hom' , 'tarif' =>15.83 , 'designation'=>'permanente pour homme' ),
+array('nom' => 'couleur homme' , 'tarif' =>17.50 , 'designation'=>'couleur pour homme' ),
+
+array('nom' => 'Ras trad' , 'tarif' =>13.33 , 'designation'=>'Rasage trad à l\'ancienne (cp choux)' ),
+array('nom' => 'Ras des' , 'tarif' =>17.50 , 'designation'=>'Rasage design' ),
+array('nom' => 'entret barbe' , 'tarif' =>10.83 , 'designation'=>'entretien tracer de barbe (-12 jours)' ),
+array('nom' => 'taille br ras' , 'tarif' =>12.50 , 'designation'=>'taille barbe au rasoir' ),
+array('nom' => 'taille br cis' , 'tarif' =>5.83 , 'designation'=>'taille barbe aux ciseaux' ),
+array('nom' => 'taille br tond' , 'tarif' =>4.17 , 'designation'=>'taille barbe tondeuse' ),
+array('nom' => 'taille moust' , 'tarif' =>2.50 , 'designation'=>'taille moustache' )          
         );
        
        
        
        $listeArticleFemme = array(
-           array('nom' => 'forf sh cp brushing ou mise en plis' , 'tarif' =>19.17 ),
-array('nom' => 'forf sh brushing ou mp' , 'tarif' =>12.5 ),
 
-array('nom' => 'supp longueur' , 'tarif' =>4.17 ),
-array('nom' => 'soin' , 'tarif' =>4.17 ),
-array('nom' => 'mousse' , 'tarif' =>4.17 ),
-array('nom' => 'couleur à partir de' , 'tarif' =>19.17 ),
-array('nom' => 'permanente à partie de' , 'tarif' =>20 ),
-array('nom' => 'mèches à partir de' , 'tarif' =>21.67 ),
-array('nom' => 'flash' , 'tarif' =>12.5 ),
-array('nom' => 'décoloration à partir de' , 'tarif' =>20.83 ),
-array('nom' => 'décapage à partir de' , 'tarif' =>16.67 ),
-array('nom' => 'chignon banane' , 'tarif' =>23.33 ),
-array('nom' => 'chignon +' , 'tarif' =>27.5 ),
-array('nom' => 'chignon ++' , 'tarif' =>31.67 ),
-array('nom' => 'forfait mariage ( 2 essais + le jour j )' , 'tarif' =>78.33 ),
-array('nom' => 'forfait mariage ( 1 essai + le jour j )' , 'tarif' =>58.33 ),
-array('nom' => 'tresse à partir de ' , 'tarif' =>14.17 )
+array('nom' => 'forf sh,cp,brush ou m.e.p' , 'tarif' =>19.17 , 'designation'=>'shampoing, coupe, brushing ou mise en plis' ),
+array('nom' => 'forf sh,brush ou m.e.p' , 'tarif' =>12.50 , 'designation'=>'shampoing, brushing ou mise en plis' ),
+
+array('nom' => 'supp longueur' , 'tarif' =>4.17 , 'designation'=>'supplement longueur' ),
+array('nom' => 'soin' , 'tarif' =>4.17 , 'designation'=>'soin' ),
+array('nom' => 'mousse' , 'tarif' =>4.17 , 'designation'=>'mousse' ),
+array('nom' => 'couleur à partir de' , 'tarif' =>19.17 , 'designation'=>'couleur' ),
+array('nom' => 'permanente Fem' , 'tarif' =>20.00 , 'designation'=>'permanente Femme à partie de' ),
+array('nom' => 'meches' , 'tarif' =>21.67 , 'designation'=>'mèches à partir de' ),
+array('nom' => 'flash' , 'tarif' =>12.50 , 'designation'=>'flash' ),
+array('nom' => 'decoloration' , 'tarif' =>20.83 , 'designation'=>'décoloration à partir de' ),
+array('nom' => 'decapage' , 'tarif' =>16.67 , 'designation'=>'décapage à partir de' ),
+array('nom' => 'chignon banane' , 'tarif' =>23.33 , 'designation'=>'chignon banane' ),
+array('nom' => 'chignon +' , 'tarif' =>27.50 , 'designation'=>'chignon travaillé' ),
+array('nom' => 'chignon ++' , 'tarif' =>31.67 , 'designation'=>'chignon travaillé ++' ),
+array('nom' => 'forf mariage 2es' , 'tarif' =>78.33 , 'designation'=>'forfait mariage ( 2 essais + le jour j )' ),
+array('nom' => 'forf mariage 1es' , 'tarif' =>58.33 , 'designation'=>'forfait mariage ( 1 essai + le jour j )' ),
+array('nom' => 'tresse' , 'tarif' =>14.17 , 'designation'=>'tresse à partir de ' )   
         );
        
        
        $listeArticleEnfant = array(
-           array('nom' => 'sh coupe coif -14' , 'tarif' =>11.67 ),
-           array('nom' => 'sh coupe coif fille -18' , 'tarif' =>15 ),
-           array('nom' => 'coupe bébé' , 'tarif' =>7.5 ),
-           array('nom' => 'coupe enfant' , 'tarif' =>10 )
+
+array('nom' => 'sh,cp,coif -14' , 'tarif' =>11.67 , 'designation'=>'shampoing, coupe, coiffage -14 ans' ),
+array('nom' => 'sh,cp,coif fille -18' , 'tarif' =>15.00 , 'designation'=>'shampoing, coupe, coiffage fille -18ans' ),
+
+array('nom' => 'cp bb' , 'tarif' =>7.50 , 'designation'=>'coupe pour bébé' ),
+array('nom' => 'cp enfant' , 'tarif' =>10.00 , 'designation'=>'coupe pour enfant' )
+
 
        );
        
@@ -139,18 +144,18 @@ array('nom' => 'tresse à partir de ' , 'tarif' =>14.17 )
        
        foreach ($listeArticleEnfant as  $value) {
            $ob = new Articles($value['nom'], $value['tarif'], $Taxe20, $catEnfant);
-           $ob->setDesignation($value['nom']);
+           $ob->setDesignation($value['designation']);
            array_push($topersist, $ob );
        }
        
        foreach ($listeArticleFemme as  $value) {
            $ob = new Articles($value['nom'],$value['tarif'], $Taxe20, $catFemme);
-           $ob->setDesignation($value['nom']);
+           $ob->setDesignation($value['designation']);
            array_push($topersist, $ob );
        }
        foreach ($listeArticleHomme as  $value) {
            $ob = new Articles($value['nom'],$value['tarif'], $Taxe20, $catHomme);
-           $ob->setDesignation($value['nom']);
+           $ob->setDesignation($value['designation']);
            array_push($topersist, $ob );
        }
        
