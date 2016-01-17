@@ -1,8 +1,6 @@
-*.DS_Store
-
 /web/bundles/
 /app/bootstrap*
 /app/cache/*
 /app/logs/*
-/vendor/
+/vendor/*
 /app/config/parameters.yml

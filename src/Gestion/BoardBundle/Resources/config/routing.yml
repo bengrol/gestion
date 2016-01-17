@@ -1,0 +1,4 @@
+gestion_board_home:
+    path:     /board
+    defaults: { _controller: GestionBoardBundle:CA:getWeek }
+

@@ -95,7 +95,7 @@ class Articles
     function __construct($nom, $prixHt, $taxe, $categorie, $tech = false, $edit = false, $public = true) {
         $this->nom = $nom;
         $this->editable = $edit;
-        $this->prixHt = $prixHt;
+        $this->prixHt =  round($prixHt, 2);
         $this->taxe = $taxe;
         $this->categorie = $categorie;
         $this->ligneCommande = new ArrayCollection();
@@ -177,7 +177,7 @@ class Articles
     public function setPrixHt($prixHt)
     {
         
-        $this->prixHt =  $prixHt;
+        $this->prixHt =  round($prixHt, 2);
 
         return $this;
     }
@@ -200,7 +200,7 @@ class Articles
      */
     public function setTaxe($taxe)
     {
-        $this->taxe = $taxe;
+        $this->taxe = round($taxe, 2);
 
         return $this;
     }

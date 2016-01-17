@@ -1,3 +1,7 @@
+gestion_board:
+    resource: "@GestionBoardBundle/Resources/config/routing.yml"
+    prefix:   /
+
 gestion_homepage:
     path:     /
     defaults: { _controller: GestionCoreBundle:Default:index }

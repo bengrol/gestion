@@ -42,3 +42,4 @@ security:
       #  - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/parametres/, role: ROLE_ADMIN }
         - { path: ^/gestion/, role: ROLE_SALARIE }
+        - { path: ^/board$, role: ROLE_SALARIE }

@@ -53,7 +53,9 @@
                             
                                 <a href="{{ path("gestion_articles_get", {'idArticle': art.id}) }}" class="list-group-item">
                                     <h4 class="list-group-item-heading">{{ art.nom }}</h4>
-                                    <p class="list-group-item-text">{{ art.designation }} <span style="float:right">{{ art.prixHt }}€</span></p>
+                                    <p class="list-group-item-text">{{ art.designation }} 
+                                        <span style="float:right">{{ art.prixHt }}€ ht -- {{ (art.prixHt * (art.taxe.taux/100+1)) | round(2, 'ceil')}}€ ttc</span>
+                                    </p>
                                     
                                 </a>
                             

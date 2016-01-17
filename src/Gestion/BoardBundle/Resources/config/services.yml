@@ -1,0 +1,4 @@
+services:
+#    gestion_board.example:
+#        class: Gestion\BoardBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -127,6 +127,7 @@ class LignesCommande
     {
         $listToreplace = array(',' );
         
+       $prixHt = round($prixHt, 2);
         $this->prixHt = str_replace($listToreplace, '.', $prixHt);
 
         return $this;
@@ -150,7 +151,7 @@ class LignesCommande
      */
     public function setTva($tva)
     {
-        $this->tva = $tva;
+        $this->tva = round($tva, 2);
 
         return $this;
     }
@@ -191,7 +192,7 @@ class LignesCommande
     
     
     public function getTTC(){
-        return $this->getPrixHt() * ($this->getTva()/100+1);
+        return round($this->getPrixHt() * ($this->getTva()/100+1), 2);
         
     }
     
